@@ -14,6 +14,16 @@ public class DronController : MonoBehaviour
 
     private Transform _transformPlayer;
 
+    #region MonoBehaviour
+
+    private void OnValidate()
+    {
+        if (_maxAngleTurn < 0)
+            _maxAngleTurn = 0;
+        if (_speedTurn < 0)
+            _speedTurn = 0;
+    }
+
     private void Start()
     {
         _rigidbody = GetComponent<Rigidbody>();
@@ -24,6 +34,8 @@ public class DronController : MonoBehaviour
     {
         Movement();
     }
+    
+    #endregion
 
     private void Movement()
     {
